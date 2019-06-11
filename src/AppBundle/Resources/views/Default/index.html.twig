@@ -1,0 +1,6 @@
+{% extends "AppBundle::layout.html.twig" %}
+{% block content %}
+    {% for message in app.session.flashBag().get('status') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+{% endblock %}

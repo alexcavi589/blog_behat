@@ -1,0 +1,64 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+login:
+    path: /login
+    defaults: { _controller: AppBundle:User:login }
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+blog_homepage:
+    path:     /home/{page}
+    defaults: { _controller: AppBundle:Entry:index, page:1 }
+
+blog_index_tag:
+    path:   /tags
+    defaults: { _controller: AppBundle:Tag:index }
+
+blog_add_tag:
+    path:   /tags/add
+    defaults: { _controller: AppBundle:Tag:add }
+
+blog_delete_tag:
+    path:   /tags/delete/{id}
+    defaults: { _controller: AppBundle:Tag:delete }
+
+blog_index_category:
+    path:   /categories
+    defaults: { _controller: AppBundle:Category:index }
+
+blog_add_category:
+    path:   /categories/add
+    defaults: { _controller: AppBundle:Category:add }
+
+blog_delete_category:
+    path:   /categories/delete/{id}
+    defaults: { _controller: AppBundle:Category:delete }
+
+blog_edit_category:
+    path:   /categories/edit/{id}
+    defaults: { _controller: AppBundle:Category:edit }
+
+blog_read_category:
+    path:   /category/{id}/{page}
+    defaults: { _controller: AppBundle:Category:category, page:1 }
+blog_add_entry:
+    path:   /entries/add
+    defaults: { _controller: AppBundle:Entry:add }
+
+blog_delete_entry:
+    path:   /entries/delete/{id}
+    defaults: { _controller: AppBundle:Entry:delete }
+
+blog_edit_entry:
+    path:   /entries/edit/{id}
+    defaults: { _controller: AppBundle:Entry:edit }
+
+blog_lang:
+    path:   /lang/{_locale}
+    defaults: { _controller: AppBundle:Default:lang }

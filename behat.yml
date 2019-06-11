@@ -1,0 +1,39 @@
+default:
+    suites:
+        prueba_features:
+            contexts:
+                - Knp\FriendlyContexts\Context\MinkContext
+                - Knp\FriendlyContexts\Context\TableContext
+                - Knp\FriendlyContexts\Context\EntityContext
+                - Knp\FriendlyContexts\Context\ApiContext
+                - Behat\SoapExtension\Context\SoapContext
+                - pruebaContext:
+            type: symfony_bundle
+            bundle: AppBundle
+        default:
+            contexts:
+                - FeatureContext:
+    extensions:
+        Behat\Symfony2Extension: ~
+        Behat\MinkExtension:
+            # Set the base_url to match your environment setup
+            base_url: http://localhost/blog_behat/web/app_dev.php
+            javascript_session: selenium2
+            browser_name: 'chrome'
+            default_session: 'selenium2'
+            show_cmd: 'chrome %s'
+            zombie: ~
+            selenium2:
+                wd_host: http://127.0.0.1:4444/wd/hub
+                capabilities: { "browserName": "chrome", "browser": "chrome", "version": "62", 'chrome': {'switches':['--no-sandbox', '--headless']}, "marionette": true}
+        Knp\FriendlyContexts\Extension:
+            entities:
+                namespaces:
+                    - Category
+                    - Tag
+                    - User
+            api:
+                base_url: http://localhost/blog_behat/web/app_dev.php
+        Behat\SoapExtension:
+            options: {}
+            namespaces: {}
